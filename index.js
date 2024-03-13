@@ -10,26 +10,39 @@ console.log('Archivo cargado');
  *
  * Iteran el arreglo
  *
- * .map
- * .foreach
+ * .foreach ✅
  * .sort
  * .reduce
  * .filter
+ * .map
  */
 
-//callbacks //fn que se pasa como param que se van a ejecutar después
+//0  1  2  3  4  5  6  7  8
+const nums = [4, 3, 7, 6, 3, 2, 1, 8, 9];
 
-// function calculadora
-function calculadora(num1, num2, call) {
-  call(num1, num2);
-}
+//foreach callback (value, index, array)
+// nums.forEach((value, index, array) => {
+//   console.log('indice:', index, 'valor:', value, 'array:', array);
+// });
 
-calculadora(1, 2, function (num1, num2) {
-  console.log(num1 + num2);
+console.log(nums);
+
+//sort   callback
+nums.sort((a, b) => {
+  // x < 0 < x
+
+  /**
+   * a antes que b regresar   < 0
+   * b antes que a regresar   > 0
+   * a y b son iguals regresar 0
+   */
+  if (a < b) {
+    return 1;
+  } else if (b < a) {
+    return -1;
+  } else {
+    return 0;
+  }
 });
 
-calculadora(1, 2, function (num1, num2) {
-  console.log(num1 - num2);
-});
-
-console.log(calculadora);
+console.log(nums);
