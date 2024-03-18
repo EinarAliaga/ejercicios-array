@@ -1,7 +1,8 @@
-Crear elementos html desde js 
-Buscar elementos html por id o por clase
-Borrar elementos html 
-Ejecutar fn con botones
+Crear elementos html desde js ✅
+Meter texto a un <p> ✅
+Buscar elementos html por id  ✅
+Borrar elementos html ✅
+Ejecutar fn con botones ✅
 
 
 TIENDA DE PRODUCTOS
