@@ -143,6 +143,28 @@ const ejercicio4 = () => {
   mostrarStrings(fabricantes);
 };
 
+const ejercicio5 = () => {
+  //Precio promedio de los productos
+  //[productos] -> number
+
+  //calcular suma
+  const suma = productos.reduce((acu, producto) => {
+    return acu + producto.price;
+  }, 0);
+
+  //dividir entre longitud de arreglo
+  const promedio = suma / productos.length;
+
+  //mostrarlo en el DOM
+
+  contenedor.innerHTML = '';
+
+  const promedioP = document.createElement('p');
+  promedioP.textContent = 'Promedio: ' + promedio.toFixed(2);
+
+  contenedor.appendChild(promedioP);
+};
+
 const ejercicio1Button = document.getElementById('ejercicio1');
 ejercicio1Button.addEventListener('click', ejercicio1);
 
@@ -154,3 +176,6 @@ ejercicio3Button.addEventListener('click', ejercicio3);
 
 const ejercicio4Button = document.getElementById('ejercicio4');
 ejercicio4Button.addEventListener('click', ejercicio4);
+
+const ejercicio5Button = document.getElementById('ejercicio5');
+ejercicio5Button.addEventListener('click', ejercicio5);
