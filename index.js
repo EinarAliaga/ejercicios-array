@@ -10,24 +10,16 @@ fetch('data.json')
     productos = data;
   });
 
-const ejercicio1 = () => {
+//Pide un [productos] y los muestra en el DOM
+const mostrarProductos = (productos) => {
+  /**
+   * [productos] -> [divs]
+   * mostrar los divs de productos
+   */
+
   contenedor.innerHTML = '';
 
-  //usar las fn de array
-  productos.sort((a, b) => {
-    if (a.price < b.price) {
-      return 1;
-    } else if (b.price < a.price) {
-      return -1;
-    } else {
-      return 0;
-    }
-  });
-
-  const top10 = productos.slice(0, 10);
-
-  // [productos] -> [<div class="producto"></div>]
-  const productosDiv = top10.map((producto, productoIndex) => {
+  const productosDiv = productos.map((producto, productoIndex) => {
     const productoDiv = document.createElement('div');
     productoDiv.classList.add('producto');
 
@@ -63,7 +55,47 @@ const ejercicio1 = () => {
   });
 };
 
+//Pide un [string] y los muestra en el DOM
+const mostrarStrings = (strings) => {
+  //Borrar contenido de contenedor
+  contenedor.innerHTML = '';
+
+  //[string] -> [div]
+  const stringDivs = strings.map((cadena) => {
+    const stringDiv = document.createElement('div');
+    stringDiv.textContent = cadena;
+    return stringDiv;
+  });
+
+  //agregar todos los divs al contenedor
+  stringDivs.forEach((stringDiv) => {
+    contenedor.appendChild(stringDiv);
+  });
+};
+
+const ejercicio1 = () => {
+  contenedor.innerHTML = '';
+
+  //usar las fn de array
+  productos.sort((a, b) => {
+    if (a.price < b.price) {
+      return 1;
+    } else if (b.price < a.price) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+
+  const top10 = productos.slice(0, 10);
+
+  // [productos] -> [<div class="producto"></div>]
+  mostrarProductos(top10);
+};
+
 const ejercicio2 = () => {
+  contenedor.innerHTML = '';
+
   // [productos] -> [categorias]
   const categoriasArreglo = productos.map((product) => {
     return product.category;
@@ -73,16 +105,8 @@ const ejercicio2 = () => {
     return categoriasArreglo.indexOf(categoria) == index;
   });
 
-  //[categorías] -> [divs]
-  const categoriaDivs = categoriasFiltradas.map((categoria) => {
-    const categoriaDiv = document.createElement('div');
-    categoriaDiv.textContent = categoria;
-    return categoriaDiv;
-  });
-
-  categoriaDivs.forEach((categoriaDiv) => {
-    contenedor.appendChild(categoriaDiv);
-  });
+  //[string] -> [divs]
+  mostrarStrings(categoriasFiltradas);
 };
 
 const ejercicio3 = () => {
@@ -97,10 +121,26 @@ const ejercicio3 = () => {
   });
 
   //[productosOrdenados] -> [divs]
-  const productosDiv = productosFiltrados.map((producto) => {
-    const div = document.createElement();
-    return;
+  mostrarProductos(productosFiltrados);
+};
+
+const ejercicio4 = () => {
+  //top 5 productos más caros
+  productos.sort((productoA, productoB) => {
+    return productoB.price - productoA.price;
   });
+
+  const top5 = productos.slice(0, 5);
+
+  //[productos] -> [strings MAYUS]
+  //manufacturer -> mayus
+
+  const fabricantes = top5.map((producto) => {
+    return producto.manufacturer.toUpperCase();
+  });
+
+  //[string] -> [divs]
+  mostrarStrings(fabricantes);
 };
 
 const ejercicio1Button = document.getElementById('ejercicio1');
@@ -111,3 +151,6 @@ ejercicio2Button.addEventListener('click', ejercicio2);
 
 const ejercicio3Button = document.getElementById('ejercicio3');
 ejercicio3Button.addEventListener('click', ejercicio3);
+
+const ejercicio4Button = document.getElementById('ejercicio4');
+ejercicio4Button.addEventListener('click', ejercicio4);
