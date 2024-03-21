@@ -7,6 +7,7 @@ console.log('Archivo cargado');
  * .slice Dividir un arreglo
  * .join Une los elementos del array, regresa string
  * .concat  Une arreglos y regresa uno nuevo
+ * .indexOf Regresa el primer index del elemento a buscar
  *
  * Iteran el arreglo
  *
